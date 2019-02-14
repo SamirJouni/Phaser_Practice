@@ -12,8 +12,13 @@ gameScene.preload = function () {
 // Create
 
 gameScene.create = function () {
-	let bg = this.add.sprite(0, 0, 'background');
-	bg.setOrigin(0,0)
+	const bg = this.add.sprite(0, 0, 'background');
+
+	// bg.setOrigin(0,0);
+
+	const gameW = this.sys.game.config.width;
+	const gameH = this.sys.game.config.height;
+	bg.setPosition(gameW/2, gameH/2);
 }
 
 // Config

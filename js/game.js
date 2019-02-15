@@ -7,6 +7,7 @@ const gameScene  = new Phaser.Scene('Game');
 gameScene.preload = function () {
 	this.load.image('background', 'assets/background.png');
 	this.load.image('player', 'assets/player.png');
+	this.load.image('dragon', 'assets/dragon.png');
 }
 
 // Create
@@ -24,8 +25,16 @@ gameScene.create = function () {
 
 	// player
 
-	const player = this.add.sprite(50, gameH/2, 'player');
+	const player = this.add.sprite(70, gameH/2, 'player');
 	// player.depth = 1;
+
+	player.setScale(.8);
+
+	// enemy
+
+	const enemy = this.add.sprite(250, gameH/2, 'dragon');
+	enemy.scaleX = 2;
+	enemy.scaleY = 2;
 }
 
 // Config

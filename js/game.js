@@ -35,6 +35,11 @@ gameScene.create = function () {
 	const enemy = this.add.sprite(250, gameH/2, 'dragon');
 	enemy.scaleX = 2;
 	enemy.scaleY = 2;
+
+	// enemy2
+
+	const enemy2 = this.add.sprite(450, gameH/2, 'dragon');
+
 }
 
 // Config

@@ -15,6 +15,8 @@ gameScene.preload = function () {
 
 gameScene.create = function () {
 
+	// dimensions
+
 	const gameW = this.sys.game.config.width;
 	const gameH = this.sys.game.config.height;
 

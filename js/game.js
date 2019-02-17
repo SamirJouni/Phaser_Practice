@@ -8,6 +8,7 @@ gameScene.preload = function () {
 	this.load.image('background', 'assets/background.png');
 	this.load.image('player', 'assets/player.png');
 	this.load.image('dragon', 'assets/dragon.png');
+	this.load.image('treasure', 'assets/treasure.png');
 }
 
 // Create
@@ -27,20 +28,15 @@ gameScene.create = function () {
 	this.player = this.add.sprite(70, gameH/2, 'player');
 	this.player.setScale(.5);
 
-	// enemy
+	// dragon
 
-	this.enemy = this.add.sprite(250, gameH/2, 'dragon');
+	this.dragon = this.add.sprite(250, gameH/2, 'dragon');
 
 }
 
 // Update
  gameScene.update = function () {
-	 this.enemy.angle += 1;
 
-	 if (this.player.scaleX < 2 ) {
-		 this.player.scaleX += 0.01;
-		 this.player.scaleY += 0.01;
-	 }
  };
 
 // Config

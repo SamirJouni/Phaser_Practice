@@ -52,10 +52,23 @@ gameScene.create = function() {
 // Update
 
 gameScene.update = function() {
+
+	// Move Player
 	if (this.input.activePointer.isDown) {
 		this.player.x += this.playerSpeed;
 	}
+
+	// Collision Detection: Player-Treasure
+	if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.treasure.getBounds())) {
+		this.gameOver();
+	}
 };
+
+// Game Over
+
+gameScene.gameOver = function() {
+	this.scene.restart();
+}
 
 // Config
 

@@ -2,6 +2,15 @@
 
 const gameScene  = new Phaser.Scene('Game');
 
+// Initialization
+
+gameScene.init = function () {
+	this.playerSpeed = 1.5;
+	this.enemySpeed = 2;
+	this.enemyMaxY = 280;
+	this.enemyMinY= 80;
+}
+
 // Preload
 
 gameScene.preload = function () {
@@ -27,7 +36,7 @@ gameScene.create = function () {
 
 	// player
 
-	this.player = this.add.sprite(70, gameH/2, 'player');
+	this.player = this.add.sprite(40, gameH/2, 'player');
 	this.player.setScale(.5);
 
 	// dragon
@@ -38,7 +47,9 @@ gameScene.create = function () {
 
 // Update
  gameScene.update = function () {
-
+	 if(this.input.activePointer.isDown){
+		 this.player.x += this.playerSpeed;
+	 }
  };
 
 // Config

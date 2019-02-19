@@ -6,9 +6,9 @@ const gameScene = new Phaser.Scene("Game");
 
 gameScene.init = function() {
 	this.playerSpeed = 1.5;
-	this.enemySpeed = 2;
-	this.enemyMaxY = 280;
-	this.enemyMinY = 80;
+	this.dragonSpeed = 2;
+	this.dragonMaxY = 280;
+	this.dragonMinY = 80;
 };
 
 // Preload
@@ -57,6 +57,12 @@ gameScene.create = function() {
 		}
 	});
 	Phaser.Actions.ScaleXY(this.dragons.getChildren(), -.5, -.5);
+
+	// set speed
+
+	Phaser.Actions.Call(this.dragons.getChildren(), function (dragon) {
+		dragon.speed = Math.random() * 2 + 1;
+	}, this)
 };
 
 // Update
@@ -64,13 +70,31 @@ gameScene.create = function() {
 gameScene.update = function() {
 
 	// Move Player
+
 	if (this.input.activePointer.isDown) {
 		this.player.x += this.playerSpeed;
 	}
 
 	// Collision Detection: Player-Treasure
+
 	if (Phaser.Geom.Intersects.RectangleToRectangle(this.player.getBounds(), this.treasure.getBounds())) {
 		this.gameOver();
+	}
+
+
+	// Dragon Movement
+
+	const dragons = this.dragons.getChildren();
+	const numDragons = dragons.length;
+
+	for (let i = 0; i < numDragons; i++) {
+		dragons[i].y += dragons[i].speed;
+
+		if (dragons[i].y >= this.dragonMaxY && dragons[i].speed > 0) {
+			dragons[i].speed *= -1;
+		} else if(dragons[i].y <= this.dragonMinY && dragons[i].speed < 0) {
+			dragons[i].speed *= -1;
+		}
 	}
 };
 

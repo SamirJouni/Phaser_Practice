@@ -111,7 +111,14 @@ gameScene.update = function() {
 // Game Over
 
 gameScene.gameOver = function() {
-	this.scene.restart();
+
+	// Shake Camera
+	this.cameras.main.shake(300);
+
+	// Restart
+	this.time.delayedCall(300, function() {
+		this.scene.restart();
+	}, [], this);
 }
 
 // Config

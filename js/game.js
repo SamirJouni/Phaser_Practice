@@ -69,6 +69,13 @@ gameScene.create = function() {
 
 gameScene.update = function() {
 
+	// Alive Status
+	this.player.isAlive = true;
+
+	if (!this.player.isAlive) {
+		return;
+	}
+
 	// Move Player
 
 	if (this.input.activePointer.isDown) {
@@ -111,6 +118,9 @@ gameScene.update = function() {
 // Game Over
 
 gameScene.gameOver = function() {
+
+	// Kill Player
+	this.player.isAlive = false;
 
 	// Shake Camera
 	this.cameras.main.shake(300);

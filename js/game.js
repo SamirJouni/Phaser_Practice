@@ -24,6 +24,9 @@ gameScene.preload = function() {
 
 gameScene.create = function() {
 
+	// Reset FX
+	this.cameras.main.resetFX();
+
 	// dimensions
 
 	const gameW = this.sys.game.config.width;

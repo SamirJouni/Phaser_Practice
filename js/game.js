@@ -123,10 +123,15 @@ gameScene.gameOver = function() {
 	this.player.isAlive = false;
 
 	// Shake Camera
-	this.cameras.main.shake(300);
+	this.cameras.main.shake(500);
+
+	// Fade
+	this.time.delayedCall(250, function() {
+		this.cameras.main.fade(250);
+	}, [], this);
 
 	// Restart
-	this.time.delayedCall(300, function() {
+	this.time.delayedCall(500, function() {
 		this.scene.restart();
 	}, [], this);
 }
